@@ -14,6 +14,7 @@
 .card-hotel{
     flex: 1 150px;
     padding: 2px 5px 2px 5px;
+    height: 100%;
 }
 
 .btn-reserva{
@@ -21,4 +22,3 @@
     position: absolute;
     left
 }
-
