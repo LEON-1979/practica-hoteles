@@ -5,17 +5,32 @@
   "main": "index.js",
   "scripts": {
     "dev": "lite-server",
+    "start": "concurrently \"npm run watch:scss\" \"npm rum dev \"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass -o css/ css/"
-    
+    "scss": "node-sass -o css/ css/",
+    "watch:scss": "onchange ´css/*.scss' -- npm rum scss",
+    "clean": "rimraf dist",
+    "imagemin": "imagemin images/* --out-dir dist/images",
+    "usemin": "usemin index.html -d dist --htmlmin -o dist/index.html && usemin about.html -d dist --htmlmin -o dist/about.html && usemin precio.html -d dist --htmlmin -o dist/precio.html && usemin contacto.html -d dist --htmlmin -o dist/contacto.html",
+    "build": "npm run clean && npm run scss && npm run imagemin && npm run usemin" 
+
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "copyfiles": "^2.4.0",
+    "cssmin": "^0.4.3",
+    "htmlmin": "0.0.7",
     "lite-server": "^2.5.4",
-    "node-sass": "^5.0.0"
+    "node-sass": "^5.0.0",
+    "onchange": "^7.1.0",
+    "rimraf": "^3.0.2",
+    "uglifyjs": "^2.4.11",
+    "usemin-cli": "^0.6.0"
   },
   "dependencies": {
+    "concurrently": "^5.3.0",
+    "jquery": "^3.5.1",
     "open-iconic": "^1.1.1"
   }
 }
